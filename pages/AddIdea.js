@@ -1,10 +1,3 @@
-// Name of the user
-// TextInput to the name of the idea
-// camera API <ExpoCamera>
-// Take a shot
-// Save and Cancel Buttons ... Cancel go back to the People Screen
-// when Saved
-// go back to idea and display
 import {
   SafeAreaView,
   StyleSheet,
@@ -33,8 +26,6 @@ export default function AddPeople({ navigation, route }) {
   const [cameraRef, setCameraRef] = useState(null);
   const { addIdea } = useContext(PeopleContext);
   const { name, id } = route.params;
-
-  // console.log(name, id);
 
   function toggleCameraFacing() {
     setFacing((current) => (current === "back" ? "front" : "back"));
@@ -75,7 +66,7 @@ export default function AddPeople({ navigation, route }) {
           style={{ flex: 1 }}
         >
           <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-            <View style={{ flex: 1 }}>
+            <View style={styles.innerContainer}>
               <View style={styles.textBox}>
                 <Text style={styles.text}>Name: </Text>
                 <TextInput
@@ -88,14 +79,14 @@ export default function AddPeople({ navigation, route }) {
                   fontSize={16}
                 />
               </View>
-              <View style={{ flex: 2 }}>
+              <View style={styles.cameraContainer}>
                 {!photo ? (
                   <CameraView
-                    style={{ flex: 1, marginHorizontal: 30, marginTop: 15 }}
+                    style={styles.cameraView}
                     facing={facing}
                     ref={(ref) => setCameraRef(ref)}
                   >
-                    <View style={styles.cameraContainer}>
+                    <View style={styles.cameraControls}>
                       <TouchableOpacity
                         style={styles.flipButton}
                         onPress={toggleCameraFacing}
@@ -149,12 +140,13 @@ export default function AddPeople({ navigation, route }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 1,
     backgroundColor: "#fff",
   },
-  calendar: {
-    marginTop: 30,
-    flex: 1,
+  innerContainer: {
+    flexGrow: 1,
+    justifyContent: "flex-start",
+    paddingBottom: 20, // Adding some space at the bottom
   },
   textBox: {
     marginTop: 30,
@@ -163,28 +155,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   input: {
-    // height: 36,
     width: 270,
-    // borderWidth: 1,
-    // borderRadius: 5,
     padding: 10,
     borderBottomWidth: 1,
   },
   text: {
     fontSize: 16,
   },
-  buttons: {
-    flex: 2,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-around",
-    marginBottom: 40,
-  },
-  message: {
-    textAlign: "center",
-    paddingBottom: 10,
-  },
   cameraContainer: {
+    flex: 2,
+    justifyContent: "center",
+  },
+  cameraView: {
+    flex: 1,
+    marginHorizontal: 30,
+    marginTop: 15,
+  },
+  cameraControls: {
     flex: 1,
     backgroundColor: "transparent",
     flexDirection: "row",
@@ -198,10 +185,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
   },
-  flipText: {
-    fontSize: 18,
-    color: "black",
-  },
   captureButton: {
     alignSelf: "flex-end",
     alignItems: "center",
@@ -209,9 +192,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
   },
-  captureText: {
-    fontSize: 18,
-    color: "black",
+  buttons: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+    marginBottom: 40,
+  },
+  message: {
+    textAlign: "center",
+    paddingBottom: 10,
   },
   previewContainer: {
     flex: 1,
@@ -222,5 +211,9 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "80%",
     resizeMode: "contain",
+  },
+  captureText: {
+    fontSize: 18,
+    color: "black",
   },
 });
