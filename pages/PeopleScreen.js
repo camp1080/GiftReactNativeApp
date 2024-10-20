@@ -41,8 +41,8 @@ export default function PeopleScreen({ navigation }) {
   );
 
   function showPerson() {
-    console.log("IM HERE!!! ", people);
-    console.log("PEOPLE 0", people[0]);
+    // console.log("IM HERE!!! ", people);
+    // console.log("PEOPLE 0", people[0]);
 
     if (people.length === 0) {
       return (

@@ -20,10 +20,10 @@ export default function PeopleScreen({ navigation, route }) {
   const { name, id } = route.params;
 
   const currentPerson = people.find((people) => people.id === id);
-  console.log(
-    `This are the ideas of ${name} ` +
-      `${currentPerson.ideas} ${currentPerson.dob}`
-  );
+  // console.log(
+  //   `This are the ideas of ${name} ` +
+  //     `${currentPerson.ideas} ${currentPerson.dob}`
+  // );
 
   function showIdea() {
     if (currentPerson.ideas.length === 0) {

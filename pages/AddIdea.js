@@ -34,7 +34,7 @@ export default function AddPeople({ navigation, route }) {
   const { addIdea } = useContext(PeopleContext);
   const { name, id } = route.params;
 
-  console.log(name, id);
+  // console.log(name, id);
 
   function toggleCameraFacing() {
     setFacing((current) => (current === "back" ? "front" : "back"));

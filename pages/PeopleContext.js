@@ -16,7 +16,7 @@ export const PeopleProvider = ({ children }) => {
       if (savedPeople) setPeople(JSON.parse(savedPeople));
     };
     loadPeople();
-    console.log(people);
+    // console.log(people);
   }, []);
 
   const addPerson = async (name, dob) => {
@@ -27,7 +27,7 @@ export const PeopleProvider = ({ children }) => {
       ideas: [],
     };
     const updatedPeople = [...people, newPerson];
-    console.log(updatedPeople);
+    // console.log(updatedPeople);
     setPeople(updatedPeople);
     await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(updatedPeople));
   };
