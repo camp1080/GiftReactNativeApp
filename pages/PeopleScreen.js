@@ -46,7 +46,16 @@ export default function PeopleScreen({ navigation }) {
 
     if (people.length === 0) {
       return (
-        <Text style={styles.container}>No persons were added! {":("}</Text>
+        <View style={styles.container}>
+          <FontAwesome
+            name={"user-circle"}
+            size={72}
+            color={"#3336"}
+          ></FontAwesome>
+          <Text style={styles.noPerson}>
+            No persons {"\n"}were added! {":("}
+          </Text>
+        </View>
       );
     } else {
       return (
@@ -78,13 +87,16 @@ export default function PeopleScreen({ navigation }) {
     }
   }
 
-  return <SafeAreaView>{showPerson()}</SafeAreaView>;
+  return <SafeAreaView style={{ flex: 1 }}>{showPerson()}</SafeAreaView>;
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     marginHorizontal: 15,
     marginTop: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
   personContainer: {
     flexDirection: "row",
@@ -114,5 +126,10 @@ const styles = StyleSheet.create({
     marginTop: 15,
     borderTopLeftRadius: 15,
     borderBottomLeftRadius: 15,
+  },
+  noPerson: {
+    fontSize: 24,
+    textAlign: "center",
+    color: "#33333366",
   },
 });

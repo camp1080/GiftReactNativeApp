@@ -28,9 +28,17 @@ export default function PeopleScreen({ navigation, route }) {
   function showIdea() {
     if (currentPerson.ideas.length === 0) {
       return (
-        <Text style={styles.container}>
-          No ideas for {name} {":("}
-        </Text>
+        <View style={styles.container}>
+          <FontAwesome
+            name={"umbrella"}
+            size={72}
+            color={"#3336"}
+          ></FontAwesome>
+          <Text style={styles.noIdea}>
+            No ideas for {name}. {"\n"}
+            Tap "Add Idea" to {"\n"} get started!
+          </Text>
+        </View>
       );
     } else {
       return (
@@ -64,10 +72,10 @@ export default function PeopleScreen({ navigation, route }) {
     }
   }
 
-  console.log(people);
+  // console.log(people);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <Text style={styles.title}>Ideas for {name}</Text>
       {showIdea()}
     </SafeAreaView>
@@ -76,8 +84,11 @@ export default function PeopleScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     marginHorizontal: 15,
     marginTop: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
     justifyContent: "center",
@@ -107,5 +118,10 @@ const styles = StyleSheet.create({
   },
   iconDistance: {
     alignSelf: "flex-start",
+  },
+  noIdea: {
+    fontSize: 24,
+    textAlign: "center",
+    color: "#33333366",
   },
 });
